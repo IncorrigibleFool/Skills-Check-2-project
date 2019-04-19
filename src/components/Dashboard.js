@@ -9,6 +9,8 @@ export default class Dashboard extends Component{
             res.status(200)
             this.props.get()
         }).catch(err => `Error found: ${err}`)
+
+        
     }
     
     render(){
@@ -21,6 +23,7 @@ export default class Dashboard extends Component{
                     key={item.product_id}
                     item={item}
                     delete={this.delete}
+                    select={this.props.select}
                     />
                 })}
             </div>

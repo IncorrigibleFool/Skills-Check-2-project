@@ -7,10 +7,10 @@ export default class Product extends Component{
         let {image_url, product_name, product_price, product_id} = item
         return(
             <div>
-                <img id='image' src={image_url} alt=''/>
+                <img id='image' src={image_url} alt='url invalid'/>
                 <span>{product_name}</span>
                 <span>{product_price}</span>
-                <button>Edit</button>
+                <button onClick={() => this.props.select(product_id)}>Edit</button>
                 <button onClick={() => this.props.delete(product_id)}>Delete</button>
             </div>
         )

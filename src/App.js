@@ -10,8 +10,11 @@ class App extends Component {
     super()
 
     this.state = {
-      inventory: []
+      inventory: [],
+      selectedItem: null
     }
+
+    this.selectItem = this.selectItem.bind(this)
   }
 
   componentDidMount(){
@@ -20,6 +23,12 @@ class App extends Component {
         inventory: res.data
       })
     }).catch(err => console.log(`Error found: ${err}`))
+  }
+
+  selectItem(id) {
+    this.setState({
+      selectedItem: id
+    })
   }
 
   // componentDidUpdate(){
@@ -36,8 +45,11 @@ class App extends Component {
         <Header/>
         <Dashboard 
           inventory={this.state.inventory}
-          get={this.componentDidMount}/>
-        <Form/>
+          get={this.componentDidMount()}
+          select={this.selectItem}/>
+        <Form
+          item={this.state.selectedItem}
+          inventory={this.state.inventory}/>
       </div>
     );
   }

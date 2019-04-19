@@ -22,6 +22,18 @@ module.exports = {
         })
     },
 
+    update: (req, res) => {
+        const db = req.app.get('db')
+        const{name, price, imageurl} = req.body
+
+        db.update_product([req.params.id, name, price, imageurl]).then(() => {
+            res.status(200)
+        }).catch(err => {
+            res.send(`Error encountered: ${err}`)
+            console.log(err)
+        })
+    },
+
     delete: (req, res) => {
         const db = req.app.get('db')
         

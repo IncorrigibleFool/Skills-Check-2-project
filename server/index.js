@@ -15,6 +15,7 @@ app.use(express.json())
 
 app.get('/api/shelfie', controller.get)
 app.post('/api/shelfie', controller.create)
+app.put('/api/shelfie/:id', controller.update)
 app.delete('/api/shelfie/:id', controller.delete)
 
 app.listen(SERVER_PORT, () => {
